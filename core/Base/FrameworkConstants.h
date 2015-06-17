@@ -12,12 +12,12 @@
 
     @{*/
 
-#ifndef LARLITE_FRAMEWORKCONSTANTS_H
-#define LARLITE_FRAMEWORKCONSTANTS_H
+#ifndef FOOLIGHT_FRAMEWORKCONSTANTS_H
+#define FOOLIGHT_FRAMEWORKCONSTANTS_H
 #include <string>
 
 /// Namespace of everything in this framework
-namespace larlite{
+namespace foolight{
   
   /// Defines constants for Message utility
   namespace msg{

@@ -11,64 +11,65 @@
 
     @{*/
 
-#ifndef LARLITE_STORAGE_MANAGER_H
-#define LARLITE_STORAGE_MANAGER_H
+#ifndef FOOLIGHT_STORAGE_MANAGER_H
+#define FOOLIGHT_STORAGE_MANAGER_H
 
 #include <TFile.h>
 #include <TChain.h>
 #include <TError.h>
-#include "Base/larlite_base.h"
+#include "Base/foolight_base.h"
 #include "data_base.h"
-#include "event_ass.h"
-namespace larlite {
-  class trigger;
-  class potsummary;
-  class event_hit;
-  class hit;
+//#include "event_ass.h"
+
+namespace foolight {
+  // class trigger;
+  // class potsummary;
+  // class event_hit;
+  // class hit;
   class event_track;
-  class event_mctruth;
-  class event_gtruth;
-  class event_mcpart;
-  class event_mctree;
-  class event_user;
-  class event_spacepoint;
-  class event_rawdigit;
-  class event_wire;
-  class event_hit;
-  class event_cluster;
-  class event_shower;
-  class event_mcshower;
-  class event_mctrack;
-  class event_simch;
-  class event_calorimetry;
-  class event_vertex;
-  class event_endpoint2d;
-  class event_seed;
-  class event_cosmictag;
-  class event_opflash;
-  class event_ophit;
-  class event_mcflux;
-  class event_pfpart;
-  class event_partid;
-  class event_gtruth;
-  class event_minos;
-  class event_ass;
-  class event_pcaxis;
-  class event_flashmatch;
-  class event_fifo;
+  // class event_mctruth;
+  // class event_gtruth;
+  // class event_mcpart;
+  // class event_mctree;
+  // class event_user;
+  // class event_spacepoint;
+  // class event_rawdigit;
+  // class event_wire;
+  // class event_hit;
+  // class event_cluster;
+  // class event_shower;
+  // class event_mcshower;
+  // class event_mctrack;
+  // class event_simch;
+  // class event_calorimetry;
+  // class event_vertex;
+  // class event_endpoint2d;
+  // class event_seed;
+  // class event_cosmictag;
+  // class event_opflash;
+  // class event_ophit;
+  // class event_mcflux;
+  // class event_pfpart;
+  // class event_partid;
+  // class event_gtruth;
+  // class event_minos;
+  // class event_ass;
+  // class event_pcaxis;
+  // class event_flashmatch;
+  // class event_fifo;
 }
 
-namespace larlite {
+namespace foolight {
   /**
      \class storage_manager
      A higher level manager class to handle event-wise data and output file.
   */
-  class storage_manager : public larlite_base {
+  class storage_manager : public foolight_base {
 
   public:
 
-    typedef std::pair<const event_ass*,AssID_t> AssInfo_t;
-    typedef std::vector<AssInfo_t> AssInfoSet_t;
+    //typedef std::pair<const event_ass*,AssID_t> AssInfo_t;
+    //typedef std::vector<AssInfo_t> AssInfoSet_t;
       
   public:
     
@@ -178,7 +179,7 @@ namespace larlite {
     unsigned int last_subrun_id() const { return _last_subrun_id; }
 
     /// Function to list product ID loaded or created
-    const std::vector<larlite::product_id>& list_input_product() const { return _input_product_id; }
+    const std::vector<foolight::product_id>& list_input_product() const { return _input_product_id; }
     
     /// Universal event data pointer getter to return event_base* pointer for specified event-data type.
     event_base* get_data(const data::DataType_t type, const std::string& name);
@@ -230,134 +231,134 @@ namespace larlite {
     */
 
 #ifndef __CINT__
-    template <class T, class U>
-    const AssInfo_t find_one_assid(const T& a, const U& b,
-				   const std::string& ass_producer)
-    {
-      auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
-      if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
-	return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);	
+    // template <class T, class U>
+    // const AssInfo_t find_one_assid(const T& a, const U& b,
+    // 				   const std::string& ass_producer)
+    // {
+    //   auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
+    //   if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
+    // 	return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);	
 
-      auto const& ev_ass = this->get_data<larlite::event_ass>(ass_producer);
-      auto id = ev_ass->find_one_assid(a,b);
-      if( id != kINVALID_ASS )
-	return std::make_pair((const larlite::event_ass*)(ev_ass),id);
+    //   auto const& ev_ass = this->get_data<foolight::event_ass>(ass_producer);
+    //   auto id = ev_ass->find_one_assid(a,b);
+    //   if( id != kINVALID_ASS )
+    // 	return std::make_pair((const foolight::event_ass*)(ev_ass),id);
 
-      return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);
-    }
+    //   return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);
+    // }
 
-    template <class T, class U>
-    const AssInfo_t find_unique_assid(const T& a, const U& b,
-				      const std::string& ass_producer)
-    {
-      auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
-      if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
-	return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);	
+    // template <class T, class U>
+    // const AssInfo_t find_unique_assid(const T& a, const U& b,
+    // 				      const std::string& ass_producer)
+    // {
+    //   auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
+    //   if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
+    // 	return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);	
 
-      auto const& ev_ass = this->get_data<larlite::event_ass>(ass_producer);
-      auto id = ev_ass->find_unique_assid(a,b);
-      if( id != kINVALID_ASS )
-	return std::make_pair((const larlite::event_ass*)(ev_ass),id);
+    //   auto const& ev_ass = this->get_data<foolight::event_ass>(ass_producer);
+    //   auto id = ev_ass->find_unique_assid(a,b);
+    //   if( id != kINVALID_ASS )
+    // 	return std::make_pair((const foolight::event_ass*)(ev_ass),id);
 
-      return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);
-    }
+    //   return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);
+    // }
       
-    template <class T, class U>
-    const AssInfoSet_t find_all_assid(const T& a, const U& b,
-				      const std::string& ass_producer)
-    {
-      auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
-      AssInfoSet_t res;
-      if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
-	return res;
+    // template <class T, class U>
+    // const AssInfoSet_t find_all_assid(const T& a, const U& b,
+    // 				      const std::string& ass_producer)
+    // {
+    //   auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
+    //   AssInfoSet_t res;
+    //   if(ev_ass_m.find(ass_producer)==ev_ass_m.end())
+    // 	return res;
 
-      auto const& ev_ass = this->get_data<larlite::event_ass>(ass_producer);
-      auto id_v = ev_ass->find_all_assid(a,b);
-      if( id_v.size() ) {
-	for(auto const& id : id_v) 
-	  res.push_back((const larlite::event_ass*)(ev_ass),id);
-      }
-      return res;
-    }
+    //   auto const& ev_ass = this->get_data<foolight::event_ass>(ass_producer);
+    //   auto id_v = ev_ass->find_all_assid(a,b);
+    //   if( id_v.size() ) {
+    // 	for(auto const& id : id_v) 
+    // 	  res.push_back((const foolight::event_ass*)(ev_ass),id);
+    //   }
+    //   return res;
+    // }
 
-    template <class T, class U>
-    const AssInfo_t find_one_assid(const T a, const U b)
-    {
-      auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
-      for(auto const& ev_ass_p : ev_ass_m) {
-	auto res = find_one_assid(a,b,ev_ass_p.first);
-	if(res.first) return res;
-      }
-      return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);
-    }
+    // template <class T, class U>
+    // const AssInfo_t find_one_assid(const T a, const U b)
+    // {
+    //   auto const& ev_ass_m = this->_ptr_data_array[data::kAssociation];
+    //   for(auto const& ev_ass_p : ev_ass_m) {
+    // 	auto res = find_one_assid(a,b,ev_ass_p.first);
+    // 	if(res.first) return res;
+    //   }
+    //   return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);
+    // }
 
-    template <class T, class U>
-    const AssInfo_t find_unique_assid(const T a, const U b)
-    {
-      auto const& ev_ass_m = _ptr_data_array[data::kAssociation];
-      event_ass* ptr=nullptr;
-      AssID_t id=kINVALID_ASS;
-      for(auto const& ev_ass_p : ev_ass_m) {
-	auto res = find_unique_assid(a,b,ev_ass_p.first);
-	if(res.first && ptr) throw DataFormatException("Association found but not unique!");
-	id = res.second;
-	ptr = res.first;
-      }
-      return std::make_pair((const larlite::event_ass*)ptr,id);
-    }
+    // template <class T, class U>
+    // const AssInfo_t find_unique_assid(const T a, const U b)
+    // {
+    //   auto const& ev_ass_m = _ptr_data_array[data::kAssociation];
+    //   event_ass* ptr=nullptr;
+    //   AssID_t id=kINVALID_ASS;
+    //   for(auto const& ev_ass_p : ev_ass_m) {
+    // 	auto res = find_unique_assid(a,b,ev_ass_p.first);
+    // 	if(res.first && ptr) throw DataFormatException("Association found but not unique!");
+    // 	id = res.second;
+    // 	ptr = res.first;
+    //   }
+    //   return std::make_pair((const foolight::event_ass*)ptr,id);
+    // }
     
-    template <class T, class U>
-    const AssInfoSet_t find_all_assid(const T a, const U b)
-    {
-      auto const& ev_ass_m = _ptr_data_array[data::kAssociation];
-      AssInfoSet_t res;
-      for(auto const& ev_ass_p : ev_ass_m) {
-	auto tmp_res_v = find_all_assid(a,b,ev_ass_p.first);
-	res.reserve(res.size() + tmp_res_v.size());
-	for(auto const& tmp_res : tmp_res_v) res.push_back(tmp_res);
-      }
-      return res;
-    }
+    // template <class T, class U>
+    // const AssInfoSet_t find_all_assid(const T a, const U b)
+    // {
+    //   auto const& ev_ass_m = _ptr_data_array[data::kAssociation];
+    //   AssInfoSet_t res;
+    //   for(auto const& ev_ass_p : ev_ass_m) {
+    // 	auto tmp_res_v = find_all_assid(a,b,ev_ass_p.first);
+    // 	res.reserve(res.size() + tmp_res_v.size());
+    // 	for(auto const& tmp_res : tmp_res_v) res.push_back(tmp_res);
+    //   }
+    //   return res;
+    // }
 
-    template <class T, class U>
-    const AssSet_t& find_one_ass(const T a, U*& b, const std::string ass_producer="")
-    {
-      if(b) throw DataFormatException("Valid pointer provided (should be nullptr)!");
+    // template <class T, class U>
+    // const AssSet_t& find_one_ass(const T a, U*& b, const std::string ass_producer="")
+    // {
+    //   if(b) throw DataFormatException("Valid pointer provided (should be nullptr)!");
 
-      auto type_b = this->data_type<U>();
-      AssInfo_t ass_info;
-      if(ass_producer.empty())
-	ass_info = this->find_one_assid(a,type_b);
-      else
-	ass_info = this->find_one_assid(a,type_b,ass_producer);
+    //   auto type_b = this->data_type<U>();
+    //   AssInfo_t ass_info;
+    //   if(ass_producer.empty())
+    // 	ass_info = this->find_one_assid(a,type_b);
+    //   else
+    // 	ass_info = this->find_one_assid(a,type_b,ass_producer);
       
-      if(!ass_info.first) return kEMPTY_ASS;
+    //   if(!ass_info.first) return kEMPTY_ASS;
 
-      auto id_b = ass_info.first->association_keys(ass_info.second).second;
-      b = this->get_data<U>(id_b.second);
+    //   auto id_b = ass_info.first->association_keys(ass_info.second).second;
+    //   b = this->get_data<U>(id_b.second);
       
-      return ass_info.first->association(ass_info.second);
-    }
+    //   return ass_info.first->association(ass_info.second);
+    // }
 
-    template <class T, class U>
-    const AssSet_t& find_unique_ass(const T a, U*& b, const std::string ass_producer="")
-    {
-      if(b) throw DataFormatException("Valid pointer provided (should be nullptr)!");
+    // template <class T, class U>
+    // const AssSet_t& find_unique_ass(const T a, U*& b, const std::string ass_producer="")
+    // {
+    //   if(b) throw DataFormatException("Valid pointer provided (should be nullptr)!");
 
-      auto type_b = this->data_type<U>();
-      AssInfo_t ass_info;
-      if(ass_producer.empty())
-	ass_info = this->find_unique_assid(a,type_b);
-      else
-	ass_info = this->find_unique_assid(a,type_b,ass_producer);
+    //   auto type_b = this->data_type<U>();
+    //   AssInfo_t ass_info;
+    //   if(ass_producer.empty())
+    // 	ass_info = this->find_unique_assid(a,type_b);
+    //   else
+    // 	ass_info = this->find_unique_assid(a,type_b,ass_producer);
 	
-      if(!ass_info.first) return kEMPTY_ASS;
+    //   if(!ass_info.first) return kEMPTY_ASS;
 
-      auto id_b = ass_info.first->association_keys(ass_info.second).second;
-      b = this->get_data<U>(id_b.second);
+    //   auto id_b = ass_info.first->association_keys(ass_info.second).second;
+    //   b = this->get_data<U>(id_b.second);
       
-      return ass_info.first->association(ass_info.second);
-    }
+    //   return ass_info.first->association(ass_info.second);
+    // }
 #endif
     
     /// Getter for a shared object instance pointer. Not limited to be a singleton.
@@ -439,17 +440,17 @@ namespace larlite {
     IOMode_t _mode;
 
     /// Array of event-data product_id 
-    std::vector<larlite::product_id> _input_product_id;
+    std::vector<foolight::product_id> _input_product_id;
     
     /// Boolean to enable event alignment check
     bool _check_alignment;
     
     /// Data pointer array for reading event-wise data
-    std::vector<std::map<std::string,larlite::event_base*> > _ptr_data_array;
+    std::vector<std::map<std::string,foolight::event_base*> > _ptr_data_array;
     /// Data pointer array for reading run-wise data
-    std::vector<std::map<std::string,larlite::run_base*> > _ptr_rundata_array;
+    std::vector<std::map<std::string,foolight::run_base*> > _ptr_rundata_array;
     /// Data pointer array for reading subrun-wise data
-    std::vector<std::map<std::string,larlite::subrun_base*> > _ptr_subrundata_array;
+    std::vector<std::map<std::string,foolight::subrun_base*> > _ptr_subrundata_array;
     
     // I/O filename
     std::string _out_fname; ///< output data file name
@@ -494,78 +495,78 @@ namespace larlite {
 
 #ifndef __CINT__
 //#include "storage_manager.template.hh"
-namespace larlite {
-  template<> data::DataType_t storage_manager::data_type<trigger> () const;
-  template<> data::DataType_t storage_manager::data_type<event_gtruth> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mctruth> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mcpart> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mcflux> () const;
-  template<> data::DataType_t storage_manager::data_type<event_simch> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mcshower> () const;
-  template<> data::DataType_t storage_manager::data_type<event_rawdigit> () const;
-  template<> data::DataType_t storage_manager::data_type<event_wire> () const;
-  template<> data::DataType_t storage_manager::data_type<event_hit> () const;
-  template<> data::DataType_t storage_manager::data_type<event_ophit> () const;
-  template<> data::DataType_t storage_manager::data_type<event_opflash> () const;
-  template<> data::DataType_t storage_manager::data_type<event_cluster> () const;
-  template<> data::DataType_t storage_manager::data_type<event_seed> () const;
-  template<> data::DataType_t storage_manager::data_type<event_spacepoint> () const;
+namespace foolight {
+  // template<> data::DataType_t storage_manager::data_type<trigger> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_gtruth> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mctruth> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mcpart> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mcflux> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_simch> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mcshower> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_rawdigit> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_wire> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_hit> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_ophit> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_opflash> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_cluster> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_seed> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_spacepoint> () const;
   template<> data::DataType_t storage_manager::data_type<event_track> () const;
-  template<> data::DataType_t storage_manager::data_type<event_shower> () const;
-  template<> data::DataType_t storage_manager::data_type<event_vertex> () const;
-  template<> data::DataType_t storage_manager::data_type<event_endpoint2d> () const;
-  template<> data::DataType_t storage_manager::data_type<event_calorimetry> () const;
-  template<> data::DataType_t storage_manager::data_type<event_partid> () const;
-  template<> data::DataType_t storage_manager::data_type<event_pfpart> () const;
-  template<> data::DataType_t storage_manager::data_type<event_user> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mctrack> () const;
-  template<> data::DataType_t storage_manager::data_type<event_mctree> () const;
-  template<> data::DataType_t storage_manager::data_type<event_minos> () const;
-  template<> data::DataType_t storage_manager::data_type<event_cosmictag>() const;
-  template<> data::DataType_t storage_manager::data_type<event_fifo>() const;
-  template<> data::DataType_t storage_manager::data_type<event_ass>() const;
-  template<> data::DataType_t storage_manager::data_type<event_pcaxis>() const;
-  template<> data::DataType_t storage_manager::data_type<event_flashmatch>() const;
-  template<> data::SubRunDataType_t storage_manager::subrundata_type<potsummary>() const;
+  // template<> data::DataType_t storage_manager::data_type<event_shower> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_vertex> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_endpoint2d> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_calorimetry> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_partid> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_pfpart> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_user> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mctrack> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_mctree> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_minos> () const;
+  // template<> data::DataType_t storage_manager::data_type<event_cosmictag>() const;
+  // template<> data::DataType_t storage_manager::data_type<event_fifo>() const;
+  // template<> data::DataType_t storage_manager::data_type<event_ass>() const;
+  // template<> data::DataType_t storage_manager::data_type<event_pcaxis>() const;
+  // template<> data::DataType_t storage_manager::data_type<event_flashmatch>() const;
+  // template<> data::SubRunDataType_t storage_manager::subrundata_type<potsummary>() const;
 
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_one_assid(const data::DataType_t a,const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_one_assid(const data::DataType_t a,const data::DataType_t b);
 				  
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_one_assid(const product_id& a,const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_one_assid(const product_id& a,const data::DataType_t b);
 				  
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_one_assid(const data::DataType_t a,const product_id& b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_one_assid(const data::DataType_t a,const product_id& b);
 				  
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_unique_assid(const data::DataType_t a,const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_unique_assid(const data::DataType_t a,const data::DataType_t b);
 				     
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_unique_assid(const product_id& a,const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_unique_assid(const product_id& a,const data::DataType_t b);
 				     
-  template<>
-  const storage_manager::AssInfo_t
-  storage_manager::find_unique_assid(const data::DataType_t a,const product_id& b);
+  // template<>
+  // const storage_manager::AssInfo_t
+  // storage_manager::find_unique_assid(const data::DataType_t a,const product_id& b);
 
-  template<>
-  const storage_manager::AssInfoSet_t
-  storage_manager::find_all_assid(const data::DataType_t a, const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfoSet_t
+  // storage_manager::find_all_assid(const data::DataType_t a, const data::DataType_t b);
 
-  template<>
-  const storage_manager::AssInfoSet_t
-  storage_manager::find_all_assid(const product_id& a, const data::DataType_t b);
+  // template<>
+  // const storage_manager::AssInfoSet_t
+  // storage_manager::find_all_assid(const product_id& a, const data::DataType_t b);
 
-  template<>
-  const storage_manager::AssInfoSet_t
-  storage_manager::find_all_assid(const data::DataType_t a, const product_id& b);
+  // template<>
+  // const storage_manager::AssInfoSet_t
+  // storage_manager::find_all_assid(const data::DataType_t a, const product_id& b);
 
 }
 #endif
 
 #endif
-/** @} */ // end of doxygen group larlite::storage_manager
+/** @} */ // end of doxygen group foolight::storage_manager

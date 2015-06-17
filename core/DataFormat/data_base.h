@@ -12,14 +12,14 @@
 
     @{*/
 
-#ifndef LARLITE_DATA_BASE_H
-#define LARLITE_DATA_BASE_H
+#ifndef FOOLIGHT_DATA_BASE_H
+#define FOOLIGHT_DATA_BASE_H
 
 #include "Base/DataFormatConstants.h"
-#include "larlite_dataformat_utils.h"
+#include "foolight_dataformat_utils.h"
 #include <TString.h>
 #include "DataFormatException.h"
-namespace larlite{
+namespace foolight{
 
   class storage_manager;
 
@@ -57,7 +57,7 @@ namespace larlite{
   /**
      \class output_base
      A base class for a producer output data product: it knows about who the hell made it. \n
-     All input/output instance held directly by the fmwk IO (i.e. larlite::storage_manager)\n
+     All input/output instance held directly by the fmwk IO (i.e. foolight::storage_manager)\n
      must inherit from this class.
    */
   class output_base : public data_base {
@@ -76,10 +76,10 @@ namespace larlite{
     /// producer's name
     const std::string& name() const;
     /// product_id creator
-    const ::larlite::product_id id() const;
+    const ::foolight::product_id id() const;
     
   private:
-    ::larlite::product_id _id;
+    ::foolight::product_id _id;
 
   };
 
@@ -189,18 +189,20 @@ namespace larlite{
     /// event-id getter
     unsigned int event_id () const;
 
-  private:
-    unsigned int fRunNumber;    ///< Run number
-    unsigned int fSubRunNumber; ///< Sub-Run number
-    unsigned int fEventID;      ///< Event ID
-
-  private:
     /// run number setter
     void set_run      (unsigned int run);
     /// sub-run number setter
     void set_subrun   (unsigned int run);
     /// event-id setter
     void set_event_id (unsigned int id );
+
+
+  private:
+    unsigned int fRunNumber;    ///< Run number
+    unsigned int fSubRunNumber; ///< Sub-Run number
+    unsigned int fEventID;      ///< Event ID
+
+  private:
 
   };
 }

@@ -1,6 +1,0 @@
-#ifndef RECOTOOL_CMTOOLANAEXCEPTION_CXX
-#define RECOTOOL_CMTOOLANAEXCEPTION_CXX
-
-#include "CMToolAnaException.h"
-
-#endif

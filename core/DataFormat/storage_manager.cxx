@@ -1,50 +1,50 @@
-#ifndef LARLITE_STORAGE_MANAGER_CXX
-#define LARLITE_STORAGE_MANAGER_CXX
+#ifndef FOOLIGHT_STORAGE_MANAGER_CXX
+#define FOOLIGHT_STORAGE_MANAGER_CXX
 #include "storage_manager.h"
 #include "storage_manager.template.cc"
 
-#include "trigger.h"
-#include "potsummary.h"
-#include "hit.h"
+// #include "trigger.h"
+// #include "potsummary.h"
+// #include "hit.h"
 #include "track.h"
-#include "mctruth.h"
-#include "mctree.h"
-#include "user_info.h"
-#include "spacepoint.h"
-#include "rawdigit.h"
-#include "wire.h"
-#include "hit.h"
-#include "cluster.h"
-#include "shower.h"
-#include "mcshower.h"
-#include "mctrack.h"
-#include "simch.h"
-#include "calorimetry.h"
-#include "vertex.h"
-#include "endpoint2d.h"
-#include "seed.h"
-#include "cosmictag.h"
-#include "opflash.h"
-#include "ophit.h"
-#include "mcflux.h"
-#include "pfpart.h"
-#include "partid.h"
-#include "gtruth.h"
-#include "minos.h"
-#include "pcaxis.h"
-#include "flashmatch.h"
-#include "event_ass.h"
-#include "fifo.h"
+// #include "mctruth.h"
+// #include "mctree.h"
+// #include "user_info.h"
+// #include "spacepoint.h"
+// #include "rawdigit.h"
+// #include "wire.h"
+// #include "hit.h"
+// #include "cluster.h"
+// #include "shower.h"
+// #include "mcshower.h"
+// #include "mctrack.h"
+// #include "simch.h"
+// #include "calorimetry.h"
+// #include "vertex.h"
+// #include "endpoint2d.h"
+// #include "seed.h"
+// #include "cosmictag.h"
+// #include "opflash.h"
+// #include "ophit.h"
+// #include "mcflux.h"
+// #include "pfpart.h"
+// #include "partid.h"
+// #include "gtruth.h"
+// #include "minos.h"
+// #include "pcaxis.h"
+// #include "flashmatch.h"
+// #include "event_ass.h"
+// #include "fifo.h"
 
-namespace larlite {
+namespace foolight {
 
   storage_manager* storage_manager::me=0;
   
   storage_manager::storage_manager(storage_manager::IOMode_t mode)
-    : larlite_base()
-    , _ptr_data_array (data::kDATA_TYPE_MAX,std::map<std::string,larlite::event_base*>())
-    , _ptr_rundata_array (data::kRUNDATA_TYPE_MAX,std::map<std::string,larlite::run_base*>())
-    , _ptr_subrundata_array (data::kSUBRUNDATA_TYPE_MAX,std::map<std::string,larlite::subrun_base*>())
+    : foolight_base()
+    , _ptr_data_array (data::kDATA_TYPE_MAX,std::map<std::string,foolight::event_base*>())
+    , _ptr_rundata_array (data::kRUNDATA_TYPE_MAX,std::map<std::string,foolight::run_base*>())
+    , _ptr_subrundata_array (data::kSUBRUNDATA_TYPE_MAX,std::map<std::string,foolight::subrun_base*>())
     , _in_id_ch  (nullptr)
     , _out_id_ch (nullptr)
     , _in_ch  (data::kDATA_TYPE_MAX,std::map<std::string,TChain*>())
@@ -576,14 +576,14 @@ namespace larlite {
 	      char c[2] = "_";
 	      if(obj_name.find_first_of(c) > obj_name.size() ||
 		 obj_name.find_first_of(c) == obj_name.find_last_of(c)) {
-		print(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not LArLite TTree)",obj->GetName()));
+		print(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not Foolight TTree)",obj->GetName()));
 		continue;
 	      }
 	      std::string type_name( obj_name.substr(0,obj_name.find_first_of(c)) );
 	      std::string suffix( obj_name.substr(obj_name.find_last_of(c)+1, obj_name.size()-obj_name.find_last_of(c)) );
 	      std::string producer_name( obj_name.substr(obj_name.find_first_of(c)+1,obj_name.find_last_of(c)-obj_name.find_first_of(c)-1) );
 	      if(suffix != "tree") {
-		print(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not LArLite TTree)",obj->GetName()));
+		print(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not Foolight TTree)",obj->GetName()));
 		continue;
 	      }
 	      bool matched=false;
@@ -710,14 +710,14 @@ namespace larlite {
 	
 	if(!exist) {
 	  print(msg::kWARNING,__FUNCTION__,
-		"Failed to read larlite_id_tree ... removing read pointer...");
+		"Failed to read foolight_id_tree ... removing read pointer...");
 	  delete _in_id_ch;
 	  _in_id_ch=nullptr;
 	}else{
 	  if( !_in_id_ch->GetBranch( "_run_id"    ) ||
 	      !_in_id_ch->GetBranch( "_subrun_id" ) ||
 	      !_in_id_ch->GetBranch( "_event_id"  ) )
-	    throw DataFormatException("larlite_id_tree in an wrong format. Cannot process this file!");
+	    throw DataFormatException("foolight_id_tree in an wrong format. Cannot process this file!");
 	  _in_id_ch->SetBranchAddress("_run_id",    &_run_id    );
 	  _in_id_ch->SetBranchAddress("_subrun_id", &_subrun_id );
 	  _in_id_ch->SetBranchAddress("_event_id",  &_event_id  );
@@ -877,12 +877,12 @@ namespace larlite {
       _fout->cd(_name_out_tdirectory.c_str());
 
       // For event id tree
-      _out_id_ch = new TTree(data::kEVENT_ID_TREE.c_str(),"LArLite Event ID Tree");
+      _out_id_ch = new TTree(data::kEVENT_ID_TREE.c_str(),"Foolight Event ID Tree");
       _out_id_ch->Branch( "_run_id",    &_run_id,    "_run_id/i"    );
       _out_id_ch->Branch( "_subrun_id", &_subrun_id, "_subrun_id/i" );
       _out_id_ch->Branch( "_event_id",  &_event_id,  "_event_id/i"  );
 
-      _run_id = _subrun_id = _event_id = ::larlite::data::kINVALID_UINT;
+      _run_id = _subrun_id = _event_id = ::foolight::data::kINVALID_UINT;
     }
     // In BOTH mode, write all that is read in
     else if(_mode==kBOTH) {
@@ -890,7 +890,7 @@ namespace larlite {
       _fout->cd(_name_out_tdirectory.c_str());
 
       // For event id tree
-      _out_id_ch = new TTree(data::kEVENT_ID_TREE.c_str(),"LArLite Event ID Tree");
+      _out_id_ch = new TTree(data::kEVENT_ID_TREE.c_str(),"Foolight Event ID Tree");
       _out_id_ch->Branch( "_run_id",    &_run_id,    "_run_id/i"    );
       _out_id_ch->Branch( "_subrun_id", &_subrun_id, "_subrun_id/i" );
       _out_id_ch->Branch( "_event_id",  &_event_id,  "_event_id/i"  );
@@ -1048,108 +1048,108 @@ namespace larlite {
     if((*name_ptr).second) return;
     
     switch(type){
-    case data::kTrigger:
-      _ptr_data_array[type][name]=new trigger(name);
-      break;
-    case data::kGTruth:
-      _ptr_data_array[type][name]=new event_gtruth(name);
-      break;
-    case data::kEvent:
-      _ptr_data_array[type][name]=new event_base(type,name);
-      break;
-    case data::kRawDigit:
-      _ptr_data_array[type][name]=new event_rawdigit(name);
-      break;
-    case data::kSimChannel:
-      _ptr_data_array[type][name]=new event_simch(name);
-      break;
-    case data::kMCShower:
-      _ptr_data_array[type][name]=new event_mcshower(name);
-      break;
+    // case data::kTrigger:
+    //   _ptr_data_array[type][name]=new trigger(name);
+    //   break;
+    // case data::kGTruth:
+    //   _ptr_data_array[type][name]=new event_gtruth(name);
+    //   break;
+    // case data::kEvent:
+    //   _ptr_data_array[type][name]=new event_base(type,name);
+    //   break;
+    // case data::kRawDigit:
+    //   _ptr_data_array[type][name]=new event_rawdigit(name);
+    //   break;
+    // case data::kSimChannel:
+    //   _ptr_data_array[type][name]=new event_simch(name);
+    //   break;
+    // case data::kMCShower:
+    //   _ptr_data_array[type][name]=new event_mcshower(name);
+    //   break;
     case data::kTrack:
       _ptr_data_array[type][name]=new event_track(name);
       break;
-    case data::kMCTruth:
-      _ptr_data_array[type][name]=new event_mctruth(name);
-      break;
-    case data::kMCParticle:
-      _ptr_data_array[type][name]=new event_mcpart(name);
-      break;
-    case data::kMCFlux:
-      _ptr_data_array[type][name]=new event_mcflux(name);
-      break;
-    case data::kSpacePoint:
-      _ptr_data_array[type][name]=new event_spacepoint(name);
-      break;
-    case data::kUserInfo:
-      _ptr_data_array[type][name]=new event_user(name);
-      break;
-    case data::kWire:
-      _ptr_data_array[type][name]=new event_wire(name);
-      break;
-    case data::kHit:
-      _ptr_data_array[type][name]=new event_hit(name);
-      break;
-    case data::kCluster:
-      _ptr_data_array[type][name]=new event_cluster(name);
-      break;
-    case data::kShower:
-      _ptr_data_array[type][name]=new event_shower(name);
-      break;
-    case data::kVertex:
-      _ptr_data_array[type][name]=new event_vertex(name);
-      break;
-    case data::kEndPoint2D:
-      _ptr_data_array[type][name]=new event_endpoint2d(name);
-      break;
-    case data::kSeed:
-      _ptr_data_array[type][name]=new event_seed(name);
-      break;
-    case data::kCalorimetry:
-      _ptr_data_array[type][name]=new event_calorimetry(name);
-      break;
-    case data::kMCNeutrino:
-      print(msg::kERROR,__FUNCTION__,Form("MCNeutrino is stored within MCTruth! Retrieve MCTruth instead."));
-      break;
-    case data::kMCTrajectory:
-      print(msg::kERROR,__FUNCTION__,Form("MCTrajectory is stored within MCParticle! Retrieve MCParticle instead."));
-      break;
-    case data::kCosmicTag:
-      _ptr_data_array[type][name]=new event_cosmictag(name);
-      break;
-    case data::kOpFlash:
-      _ptr_data_array[type][name]=new event_opflash(name);
-      break;
-    case data::kOpHit:
-      _ptr_data_array[type][name]=new event_ophit(name);
-      break;
-    case data::kPFParticle:
-      _ptr_data_array[type][name]=new event_pfpart(name);
-      break;
-    case data::kParticleID:
-      _ptr_data_array[type][name]=new event_partid(name);
-      break;
-    case data::kMCTrack:
-      _ptr_data_array[type][name]=new event_mctrack(name);
-      break;
-    case data::kMCTree:
-      _ptr_data_array[type][name]=new event_mctree(name);
-      break;
-    case data::kMinos:
-      _ptr_data_array[type][name]=new event_minos(name);
-      break;
-    case data::kAssociation:
-      _ptr_data_array[type][name]=new event_ass(name);
-      break;
-    case data::kPCAxis:
-      _ptr_data_array[type][name]=new event_pcaxis(name);
-      break;
-    case data::kFlashMatch:
-      _ptr_data_array[type][name]=new event_flashmatch(name);
-      break;
-    case data::kFIFO:
-      _ptr_data_array[type][name]=(event_fifo*)(new event_fifo(name));
-      break;
+    // case data::kMCTruth:
+    //   _ptr_data_array[type][name]=new event_mctruth(name);
+    //   break;
+    // case data::kMCParticle:
+    //   _ptr_data_array[type][name]=new event_mcpart(name);
+    //   break;
+    // case data::kMCFlux:
+    //   _ptr_data_array[type][name]=new event_mcflux(name);
+    //   break;
+    // case data::kSpacePoint:
+    //   _ptr_data_array[type][name]=new event_spacepoint(name);
+    //   break;
+    // case data::kUserInfo:
+    //   _ptr_data_array[type][name]=new event_user(name);
+    //   break;
+    // case data::kWire:
+    //   _ptr_data_array[type][name]=new event_wire(name);
+    //   break;
+    // case data::kHit:
+    //   _ptr_data_array[type][name]=new event_hit(name);
+    //   break;
+    // case data::kCluster:
+    //   _ptr_data_array[type][name]=new event_cluster(name);
+    //   break;
+    // case data::kShower:
+    //   _ptr_data_array[type][name]=new event_shower(name);
+    //   break;
+    // case data::kVertex:
+    //   _ptr_data_array[type][name]=new event_vertex(name);
+    //   break;
+    // case data::kEndPoint2D:
+    //   _ptr_data_array[type][name]=new event_endpoint2d(name);
+    //   break;
+    // case data::kSeed:
+    //   _ptr_data_array[type][name]=new event_seed(name);
+    //   break;
+    // case data::kCalorimetry:
+    //   _ptr_data_array[type][name]=new event_calorimetry(name);
+    //   break;
+    // case data::kMCNeutrino:
+    //   print(msg::kERROR,__FUNCTION__,Form("MCNeutrino is stored within MCTruth! Retrieve MCTruth instead."));
+    //   break;
+    // case data::kMCTrajectory:
+    //   print(msg::kERROR,__FUNCTION__,Form("MCTrajectory is stored within MCParticle! Retrieve MCParticle instead."));
+    //   break;
+    // case data::kCosmicTag:
+    //   _ptr_data_array[type][name]=new event_cosmictag(name);
+    //   break;
+    // case data::kOpFlash:
+    //   _ptr_data_array[type][name]=new event_opflash(name);
+    //   break;
+    // case data::kOpHit:
+    //   _ptr_data_array[type][name]=new event_ophit(name);
+    //   break;
+    // case data::kPFParticle:
+    //   _ptr_data_array[type][name]=new event_pfpart(name);
+    //   break;
+    // case data::kParticleID:
+    //   _ptr_data_array[type][name]=new event_partid(name);
+    //   break;
+    // case data::kMCTrack:
+    //   _ptr_data_array[type][name]=new event_mctrack(name);
+    //   break;
+    // case data::kMCTree:
+    //   _ptr_data_array[type][name]=new event_mctree(name);
+    //   break;
+    // case data::kMinos:
+    //   _ptr_data_array[type][name]=new event_minos(name);
+    //   break;
+    // case data::kAssociation:
+    //   _ptr_data_array[type][name]=new event_ass(name);
+    //   break;
+    // case data::kPCAxis:
+    //   _ptr_data_array[type][name]=new event_pcaxis(name);
+    //   break;
+    // case data::kFlashMatch:
+    //   _ptr_data_array[type][name]=new event_flashmatch(name);
+    //   break;
+    // case data::kFIFO:
+    //   _ptr_data_array[type][name]=(event_fifo*)(new event_fifo(name));
+    //   break;
     default:
       print(msg::kERROR,__FUNCTION__,Form("Event-data identifier not supported: %d",(int)type));
       break;
@@ -1234,9 +1234,9 @@ namespace larlite {
     if((*name_ptr).second) return;
     
     switch(type){
-    case data::kPOTSummary:
-      _ptr_subrundata_array[type][name]=new potsummary(name);
-      break;
+    // case data::kPOTSummary:
+    //   _ptr_subrundata_array[type][name]=new potsummary(name);
+    //   break;
     default:
       print(msg::kERROR,__FUNCTION__,Form("SubRun-data identifier not supported: %d",(int)type));
       break;
@@ -1780,12 +1780,12 @@ namespace larlite {
   {
     auto const& ev_ass_m = _ptr_data_array[data::kAssociation];
     for(auto const& ev_ass_p : ev_ass_m) {
-      auto const& ev_ass = (larlite::event_ass*)(ev_ass_p.second);
+      auto const& ev_ass = (foolight::event_ass*)(ev_ass_p.second);
       auto id = ev_ass->find_one_assid(type_a,type_b);
       if( id != kINVALID_ASS )
-	return std::make_pair((const larlite::event_ass*)(ev_ass),id);
+	return std::make_pair((const foolight::event_ass*)(ev_ass),id);
     }
-    return std::make_pair((const larlite::event_ass*)nullptr,kINVALID_ASS);
+    return std::make_pair((const foolight::event_ass*)nullptr,kINVALID_ASS);
   }
   */
 }

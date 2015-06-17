@@ -22,227 +22,227 @@
 #pragma link C++ class std::map<string,std::vector<int > >+;
 #pragma link C++ class std::map<string,std::vector<double> >+;
 #pragma link C++ class std::map<string,std::vector<string> >+;
-#pragma link C++ class std::map<larlite::data::DataType_t,std::set<string> >+;
+#pragma link C++ class std::map<foolight::data::DataType_t,std::set<string> >+;
 #pragma link C++ class std::vector<TVector3>+;
 #pragma link C++ class std::vector<TMatrixD>+;
 #pragma link C++ class std::vector<TLorentzVector>+;
 
-//#pragma link C++ class std::vector<unsigned int>+;
-//#pragma link C++ class std::vector<std::vector<unsigned int> >+;
-//#pragma link C++ class larlite::AssUnit_t+;
-#pragma link C++ class std::vector<larlite::AssUnit_t>+;
-#pragma link C++ class larlite::AssSet_t+;
+#pragma link C++ class std::vector<unsigned int>+;
+#pragma link C++ class std::vector<std::vector<unsigned int> >+;
+//#pragma link C++ class foolight::AssUnit_t+;
+//#pragma link C++ class std::vector<foolight::AssUnit_t>+;
+//#pragma link C++ class foolight::AssSet_t+;
 
-#pragma link C++ class std::pair<larlite::data::DataType_t,string>+;
-#pragma link C++ class larlite::product_id+;
-#pragma link C++ class std::vector<larlite::product_id>+;
-#pragma link C++ class std::pair<larlite::product_id,larlite::product_id>+;
-#pragma link C++ class std::vector<std::pair<larlite::product_id,larlite::product_id> >+;
+#pragma link C++ class std::pair<foolight::data::DataType_t,string>+;
+#pragma link C++ class foolight::product_id+;
+#pragma link C++ class std::vector<foolight::product_id>+;
+#pragma link C++ class std::pair<foolight::product_id,foolight::product_id>+;
+#pragma link C++ class std::vector<std::pair<foolight::product_id,foolight::product_id> >+;
 
-#pragma link C++ class larlite::DataFormatException+;
+#pragma link C++ class foolight::DataFormatException+;
 
-#pragma link C++ class larlite::data_base+;
-#pragma link C++ class larlite::output_base+;
-#pragma link C++ class larlite::run_base+;
-#pragma link C++ class larlite::subrun_base+;
-#pragma link C++ class larlite::event_base+;
-//#pragma link C++ class larlite::association+;
+#pragma link C++ class foolight::data_base+;
+#pragma link C++ class foolight::output_base+;
+#pragma link C++ class foolight::run_base+;
+#pragma link C++ class foolight::subrun_base+;
+#pragma link C++ class foolight::event_base+;
+//#pragma link C++ class foolight::association+;
 
-#pragma link C++ class larlite::sparse_data<float>+;
-#pragma link C++ class std::vector<larlite::sparse_data<float> >+;
-#pragma link C++ class larlite::sparse_vector<float>+;
+#pragma link C++ class foolight::sparse_data<float>+;
+#pragma link C++ class std::vector<foolight::sparse_data<float> >+;
+#pragma link C++ class foolight::sparse_vector<float>+;
 
-#pragma link C++ class larlite::potsummary+;
+// #pragma link C++ class foolight::potsummary+;
 
-#pragma link C++ class larlite::rawdigit+;
-#pragma link C++ class std::vector<larlite::rawdigit>+;
-#pragma link C++ class larlite::event_rawdigit+;
+// #pragma link C++ class foolight::rawdigit+;
+// #pragma link C++ class std::vector<foolight::rawdigit>+;
+// #pragma link C++ class foolight::event_rawdigit+;
 
-#pragma link C++ class larlite::wire+;
-#pragma link C++ class std::vector<larlite::wire>+;
-#pragma link C++ class larlite::event_wire+;
+// #pragma link C++ class foolight::wire+;
+// #pragma link C++ class std::vector<foolight::wire>+;
+// #pragma link C++ class foolight::event_wire+;
 
-#pragma link C++ class larlite::hit+;
-#pragma link C++ class std::vector<larlite::hit>+;
-#pragma link C++ class larlite::event_hit+;
+// #pragma link C++ class foolight::hit+;
+// #pragma link C++ class std::vector<foolight::hit>+;
+// #pragma link C++ class foolight::event_hit+;
 
-#pragma link C++ class larlite::ophit+;
-#pragma link C++ class std::vector<larlite::ophit>+;
-#pragma link C++ class larlite::event_ophit+;
+// #pragma link C++ class foolight::ophit+;
+// #pragma link C++ class std::vector<foolight::ophit>+;
+// #pragma link C++ class foolight::event_ophit+;
 
-#pragma link C++ class larlite::opflash+;
-#pragma link C++ class std::vector<larlite::opflash>+;
-#pragma link C++ class larlite::event_opflash+;
+// #pragma link C++ class foolight::opflash+;
+// #pragma link C++ class std::vector<foolight::opflash>+;
+// #pragma link C++ class foolight::event_opflash+;
 
-#pragma link C++ class larlite::cosmictag+;
-#pragma link C++ class std::vector<larlite::cosmictag>+;
-#pragma link C++ class larlite::event_cosmictag+;
+// #pragma link C++ class foolight::cosmictag+;
+// #pragma link C++ class std::vector<foolight::cosmictag>+;
+// #pragma link C++ class foolight::event_cosmictag+;
 
-#pragma link C++ class larlite::cluster+;
-#pragma link C++ class std::vector<larlite::cluster>+;
-#pragma link C++ class larlite::event_cluster+;
+// #pragma link C++ class foolight::cluster+;
+// #pragma link C++ class std::vector<foolight::cluster>+;
+// #pragma link C++ class foolight::event_cluster+;
 
-#pragma link C++ class larlite::endpoint2d+;
-#pragma link C++ class std::vector<larlite::endpoint2d>+;
-#pragma link C++ class larlite::event_endpoint2d+;
+// #pragma link C++ class foolight::endpoint2d+;
+// #pragma link C++ class std::vector<foolight::endpoint2d>+;
+// #pragma link C++ class foolight::event_endpoint2d+;
 
-#pragma link C++ class larlite::seed+;
-#pragma link C++ class std::vector<larlite::seed>+;
-#pragma link C++ class larlite::event_seed+;
+// #pragma link C++ class foolight::seed+;
+// #pragma link C++ class std::vector<foolight::seed>+;
+// #pragma link C++ class foolight::event_seed+;
 
-#pragma link C++ class larlite::spacepoint+;
-#pragma link C++ class std::vector<larlite::spacepoint>+;
-#pragma link C++ class larlite::event_spacepoint+;
+// #pragma link C++ class foolight::spacepoint+;
+// #pragma link C++ class std::vector<foolight::spacepoint>+;
+// #pragma link C++ class foolight::event_spacepoint+;
 
-#pragma link C++ class larlite::track+;
-#pragma link C++ class std::vector<larlite::track>+;
-#pragma link C++ class larlite::event_track+;
+#pragma link C++ class foolight::track+;
+#pragma link C++ class std::vector<foolight::track>+;
+#pragma link C++ class foolight::event_track+;
 
-#pragma link C++ class larlite::shower+;
-#pragma link C++ class std::vector<larlite::shower>+;
-#pragma link C++ class larlite::event_shower+;
+// #pragma link C++ class foolight::shower+;
+// #pragma link C++ class std::vector<foolight::shower>+;
+// #pragma link C++ class foolight::event_shower+;
 
-#pragma link C++ class larlite::vertex+;
-#pragma link C++ class std::vector<larlite::vertex>+;
-#pragma link C++ class larlite::event_vertex+;
+// #pragma link C++ class foolight::vertex+;
+// #pragma link C++ class std::vector<foolight::vertex>+;
+// #pragma link C++ class foolight::event_vertex+;
 
-#pragma link C++ class larlite::calorimetry+;
-#pragma link C++ class std::vector<larlite::calorimetry>+;
-#pragma link C++ class larlite::event_calorimetry+;
+// #pragma link C++ class foolight::calorimetry+;
+// #pragma link C++ class std::vector<foolight::calorimetry>+;
+// #pragma link C++ class foolight::event_calorimetry+;
 
-#pragma link C++ class larlite::pfpart+;
-#pragma link C++ class std::vector<larlite::pfpart>+;
-#pragma link C++ class larlite::event_pfpart+;
+// #pragma link C++ class foolight::pfpart+;
+// #pragma link C++ class std::vector<foolight::pfpart>+;
+// #pragma link C++ class foolight::event_pfpart+;
 
-#pragma link C++ class larlite::partid+;
-#pragma link C++ class std::vector<larlite::partid>+;
-#pragma link C++ class larlite::event_partid+;
+// #pragma link C++ class foolight::partid+;
+// #pragma link C++ class std::vector<foolight::partid>+;
+// #pragma link C++ class foolight::event_partid+;
 
-#pragma link C++ class larlite::user_info+;
-#pragma link C++ class std::vector<larlite::user_info>+;
-#pragma link C++ class larlite::event_user+;
+// #pragma link C++ class foolight::user_info+;
+// #pragma link C++ class std::vector<foolight::user_info>+;
+// #pragma link C++ class foolight::event_user+;
 
-#pragma link C++ class larlite::gtruth+;
-#pragma link C++ class std::vector<larlite::gtruth>+;
-#pragma link C++ class larlite::event_gtruth+;
+// #pragma link C++ class foolight::gtruth+;
+// #pragma link C++ class std::vector<foolight::gtruth>+;
+// #pragma link C++ class foolight::event_gtruth+;
 
-#pragma link C++ class larlite::mcshower+;
-#pragma link C++ class std::vector<larlite::mcshower>+;
-#pragma link C++ class larlite::event_mcshower+;
+// #pragma link C++ class foolight::mcshower+;
+// #pragma link C++ class std::vector<foolight::mcshower>+;
+// #pragma link C++ class foolight::event_mcshower+;
 
-#pragma link C++ class larlite::mcpart+;
-#pragma link C++ class std::vector<larlite::mcpart>+;
-#pragma link C++ class larlite::event_mcpart+;
+// #pragma link C++ class foolight::mcpart+;
+// #pragma link C++ class std::vector<foolight::mcpart>+;
+// #pragma link C++ class foolight::event_mcpart+;
 
-#pragma link C++ class treenode+;
-#pragma link C++ class std::vector<treenode>+;
-#pragma link C++ class larlite::mctree+;
-#pragma link C++ class std::vector<larlite::mctree>+;
-#pragma link C++ class larlite::event_mctree+;
+// #pragma link C++ class treenode+;
+// #pragma link C++ class std::vector<treenode>+;
+// #pragma link C++ class foolight::mctree+;
+// #pragma link C++ class std::vector<foolight::mctree>+;
+// #pragma link C++ class foolight::event_mctree+;
 
-#pragma link C++ class larlite::mcflux+;
-#pragma link C++ class std::vector<larlite::mcflux>+;
-#pragma link C++ class larlite::event_mcflux+;
+// #pragma link C++ class foolight::mcflux+;
+// #pragma link C++ class std::vector<foolight::mcflux>+;
+// #pragma link C++ class foolight::event_mcflux+;
 
-#pragma link C++ class larlite::mcstep+;
-#pragma link C++ class std::vector<larlite::mcstep>+;
-#pragma link C++ class larlite::mctrajectory+;
+// #pragma link C++ class foolight::mcstep+;
+// #pragma link C++ class std::vector<foolight::mcstep>+;
+// #pragma link C++ class foolight::mctrajectory+;
 
-#pragma link C++ class larlite::mctrack+;
-#pragma link C++ class std::vector<larlite::mctrack>+;
-#pragma link C++ class larlite::event_mctrack+;
+// #pragma link C++ class foolight::mctrack+;
+// #pragma link C++ class std::vector<foolight::mctrack>+;
+// #pragma link C++ class foolight::event_mctrack+;
 
-#pragma link C++ class larlite::mcnu+;
-#pragma link C++ class std::vector<larlite::mcnu>+;
+// #pragma link C++ class foolight::mcnu+;
+// #pragma link C++ class std::vector<foolight::mcnu>+;
 
-#pragma link C++ class larlite::mctruth+;
-#pragma link C++ class std::vector<larlite::mctruth>+;
-#pragma link C++ class larlite::event_mctruth+;
+// #pragma link C++ class foolight::mctruth+;
+// #pragma link C++ class std::vector<foolight::mctruth>+;
+// #pragma link C++ class foolight::event_mctruth+;
 
-#pragma link C++ class larlite::ide+;
-#pragma link C++ class larlite::simch+;
-#pragma link C++ class std::vector<larlite::ide>+;
-#pragma link C++ class std::map<UShort_t,larlite::simch>+;
-#pragma link C++ class std::vector<larlite::simch>+;
-#pragma link C++ class larlite::event_simch+;
+// #pragma link C++ class foolight::ide+;
+// #pragma link C++ class foolight::simch+;
+// #pragma link C++ class std::vector<foolight::ide>+;
+// #pragma link C++ class std::map<UShort_t,foolight::simch>+;
+// #pragma link C++ class std::vector<foolight::simch>+;
+// #pragma link C++ class foolight::event_simch+;
 
-#pragma link C++ class treenode+;
+// #pragma link C++ class treenode+;
 
-#pragma link C++ class larlite::trigger+;
+// #pragma link C++ class foolight::trigger+;
 
-#pragma link C++ class larlite::minos+;
-#pragma link C++ class std::vector<larlite::minos>+;
-#pragma link C++ class larlite::event_minos+;
+// #pragma link C++ class foolight::minos+;
+// #pragma link C++ class std::vector<foolight::minos>+;
+// #pragma link C++ class foolight::event_minos+;
 
-#pragma link C++ class larlite::pcaxis+;
-#pragma link C++ class std::vector<larlite::pcaxis>+;
-#pragma link C++ class larlite::event_pcaxis+;
+// #pragma link C++ class foolight::pcaxis+;
+// #pragma link C++ class std::vector<foolight::pcaxis>+;
+// #pragma link C++ class foolight::event_pcaxis+;
 
-#pragma link C++ class larlite::flashmatch+;
-#pragma link C++ class std::vector<larlite::flashmatch>+;
-#pragma link C++ class larlite::event_flashmatch+;
+// #pragma link C++ class foolight::flashmatch+;
+// #pragma link C++ class std::vector<foolight::flashmatch>+;
+// #pragma link C++ class foolight::event_flashmatch+;
 
-#pragma link C++ class larlite::event_ass+;
+// #pragma link C++ class foolight::event_ass+;
 
-#pragma link C++ class larlite::fifo+;
-#pragma link C++ class std::vector<larlite::fifo>+;
-#pragma link C++ class larlite::event_fifo+;
+// #pragma link C++ class foolight::fifo+;
+// #pragma link C++ class std::vector<foolight::fifo>+;
+// #pragma link C++ class foolight::event_fifo+;
 
-#pragma link C++ class larlite::storage_manager+;
+#pragma link C++ class foolight::storage_manager+;
 
 /*
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_gtruth>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_mctruth>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_mcpart>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_mcflux>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_simch>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_mcshower>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_rawdigit>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_wire>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_hit>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_ophit>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_opflash>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_cluster>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_seed>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_spacepoint>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_track>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_shower>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_vertex>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_endpoint2d>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_calorimetry>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_partid>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_pfpart>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_user>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_minos>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_ass>();
-#pragma link C++ function larlite::storage_manager::data_type<larlite::event_fifo>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_gtruth>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_mctruth>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_mcpart>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_mcflux>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_simch>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_mcshower>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_rawdigit>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_wire>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_hit>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_ophit>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_opflash>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_cluster>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_seed>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_spacepoint>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_track>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_shower>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_vertex>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_endpoint2d>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_calorimetry>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_partid>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_pfpart>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_user>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_minos>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_ass>();
+#pragma link C++ function foolight::storage_manager::data_type<foolight::event_fifo>();
 
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_gtruth>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_mctruth>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_mcpart>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_mcflux>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_simch>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_mcshower>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_rawdigit>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_wire>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_hit>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_ophit>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_opflash>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_cluster>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_seed>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_spacepoint>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_track>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_shower>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_vertex>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_endpoint2d>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_calorimetry>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_partid>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_pfpart>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_user>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_minos>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_ass>(string);
-#pragma link C++ function larlite::storage_manager::get_data<larlite::event_fifo>(string);
-#pragma link C++ function larlite::storage_manager::subrundata_type<larlite::potsummary>();
-#pragma link C++ function larlite::storage_manager::get_subrundata<larlite::potsummary>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_gtruth>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_mctruth>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_mcpart>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_mcflux>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_simch>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_mcshower>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_rawdigit>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_wire>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_hit>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_ophit>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_opflash>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_cluster>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_seed>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_spacepoint>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_track>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_shower>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_vertex>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_endpoint2d>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_calorimetry>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_partid>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_pfpart>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_user>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_minos>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_ass>(string);
+#pragma link C++ function foolight::storage_manager::get_data<foolight::event_fifo>(string);
+#pragma link C++ function foolight::storage_manager::subrundata_type<foolight::potsummary>();
+#pragma link C++ function foolight::storage_manager::get_subrundata<foolight::potsummary>(string);
 */
 #endif

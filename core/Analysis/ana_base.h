@@ -12,25 +12,25 @@
 
     @{*/
 
-#ifndef LARLITE_ANA_BASE_H
-#define LARLITE_ANA_BASE_H
+#ifndef FOOLIGHT_ANA_BASE_H
+#define FOOLIGHT_ANA_BASE_H
 
-#include "Base/larlite_base.h"
+#include "Base/foolight_base.h"
 #include "DataFormat/storage_manager.h"
 //#include "DataFormat/DataFormat-TypeDef.h"
 
-namespace larlite {
+namespace foolight {
   /**
      \class ana_base
      A base class for analysis modules to be operated with event_waveform
      data class instance. 
   */
-  class ana_base : public larlite_base{
+  class ana_base : public foolight_base{
     
   public:
     
     /// Default constructor
-    ana_base() : larlite_base() { _name="ana_base"; _fout=0;}
+    ana_base() : foolight_base() { _name="ana_base"; _fout=0;}
     
     /// Default destructor
     virtual ~ana_base(){}

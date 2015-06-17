@@ -12,12 +12,12 @@
 
     @{*/
 
-#ifndef LARLITE_ANA_CLASS_NAME_H
-#define LARLITE_ANA_CLASS_NAME_H
+#ifndef FOOLIGHT_ANA_CLASS_NAME_H
+#define FOOLIGHT_ANA_CLASS_NAME_H
 
 #include "Analysis/ana_base.h"
 
-namespace larlite {
+namespace foolight {
   /**
      \class Ana_Class_Name
      User custom analysis class made by SHELL_USER_NAME

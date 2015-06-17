@@ -1,14 +1,14 @@
 import os,sys,commands
 
-# check if LARLITE_BASEDIR is defined. If not, nothing to do.
-if not 'LARLITE_BASEDIR' in os.environ:
+# check if FOOLIGHT_BASEDIR is defined. If not, nothing to do.
+if not 'FOOLIGHT_BASEDIR' in os.environ:
     sys.exit(1)
 
 # read in template GNUmakefile
-makefile=open('%s/config/template/UserMakefile.tmp' % os.environ['LARLITE_BASEDIR'],'r').read()
+makefile=open('%s/config/template/UserMakefile.tmp' % os.environ['FOOLIGHT_BASEDIR'],'r').read()
 
 # if SRT_LOCAL is not defined, generate makefile w/o LAR_PACKAGE definition
-if not 'LARLITE_USERDEVDIR' in os.environ or not 'USER_MODULE' in os.environ:
+if not 'FOOLIGHT_USERDEVDIR' in os.environ or not 'USER_MODULE' in os.environ:
 
     makefile=makefile.replace('USER_MODULE','')
 
@@ -21,7 +21,7 @@ else:
     not_found=[]
     for package in packages:
 
-        if os.path.isdir('%s/%s' % (os.environ['LARLITE_USERDEVDIR'],package)):
+        if os.path.isdir('%s/%s' % (os.environ['FOOLIGHT_USERDEVDIR'],package)):
             print ("\033[95m" + package + "\033[0m")
             valid_packages += ' %s' % package
         else:
@@ -34,6 +34,6 @@ else:
             print x
     makefile=makefile.replace('USER_MODULE',valid_packages)
 
-fout=open('%s/GNUmakefile' % os.environ['LARLITE_USERDEVDIR'],'w')
+fout=open('%s/GNUmakefile' % os.environ['FOOLIGHT_USERDEVDIR'],'w')
 fout.write(makefile)
 fout.close()

@@ -1,4 +1,5 @@
 #include "DataFormat/storage_manager.h"
+#include "DataFormat/track.h"
 
 int main()
 {
@@ -11,12 +12,12 @@ int main()
 
   const std::string test_fname("from_io_test_you_can_remove_me.root");
   
-  larlite::storage_manager man;
+  foolight::storage_manager man;
   man.set_io_mode(man.kWRITE);
   man.set_out_filename(test_fname);
-  man.set_verbosity(larlite::msg::kNORMAL);
+  man.set_verbosity(foolight::msg::kNORMAL);
 
-  int nevents_written[larlite::data::kDATA_TYPE_MAX]={0};
+  int nevents_written[foolight::data::kDATA_TYPE_MAX]={0};
 
   std::cout 
     << std::endl
@@ -26,16 +27,23 @@ int main()
   man.open();
   for(int i=0; i<10; i++) {
 
-    for(int j=0; j<larlite::data::kDATA_TYPE_MAX; ++j) {
+    for(int j=0; j < foolight::data::kDATA_TYPE_MAX; ++j) {
+      // if( j == foolight::data::kSeed ||
+      // 	  j == foolight::data::kEvent ||
+      // 	  j == foolight::data::kMCTrajectory ||
+      // 	  j == foolight::data::kMCNeutrino ||
+      // 	  j == foolight::data::kDATA_TYPE_MAX )
 
-      if( j == larlite::data::kSeed ||
-	  j == larlite::data::kEvent ||
-	  j == larlite::data::kMCTrajectory ||
-	  j == larlite::data::kMCNeutrino ||
-	  j == larlite::data::kDATA_TYPE_MAX )
+      // 	continue;
+      if( //j == foolight::data::kSeed ||
+	  //j == foolight::data::kEvent ||
+	  //j == foolight::data::kMCTrajectory ||
+	  //j == foolight::data::kMCNeutrino ||
+	  j == foolight::data::kDATA_TYPE_MAX )
 
 	continue;
-      auto ptr = man.get_data((larlite::data::DataType_t)j,"test");
+
+      auto ptr = man.get_data((foolight::data::DataType_t)j,"test");
       if(ptr)
 	nevents_written[j]++;
     }
@@ -52,13 +60,13 @@ int main()
     << "First event loop finished & file closed."
     << std::endl;
 
-  for(int i=0; i<larlite::data::kDATA_TYPE_MAX; ++i) {
+  for(int i=0; i < foolight::data::kDATA_TYPE_MAX; ++i) {
     
     if(nevents_written[i])
 
       std::cout 
 	<< Form("Written %s_tree with %d events",
-		larlite::data::kDATA_TREE_NAME[i].c_str(),
+		foolight::data::kDATA_TREE_NAME[i].c_str(),
 		nevents_written[i])
 	<< std::endl;
   }
@@ -75,9 +83,9 @@ int main()
   man.open();
   while(man.next_event()) {
 
-    for(int i=0; i<larlite::data::kDATA_TYPE_MAX; ++i) {
+    for(int i=0; i<foolight::data::kDATA_TYPE_MAX; ++i) {
 
-      auto my_event_data = man.get_data((larlite::data::DataType_t)i,"test");
+      auto my_event_data = man.get_data((foolight::data::DataType_t)i,"test");
 
       if(my_event_data)
 
@@ -96,20 +104,20 @@ int main()
     << "//********************************************//" 
     << std::endl;
 
-  for(int i=0; i<larlite::data::kDATA_TYPE_MAX; ++i) {
+  for(int i=0; i<foolight::data::kDATA_TYPE_MAX; ++i) {
 
     if(nevents_written[i]>0)
 
-      larlite::Message::send(larlite::msg::kERROR,
+      foolight::Message::send(foolight::msg::kERROR,
 			      Form("TTree, \"%s_tree\", has more entries (+%d) than expected!",
-				   larlite::data::kDATA_TREE_NAME[i].c_str(),
+				   foolight::data::kDATA_TREE_NAME[i].c_str(),
 				   nevents_written[i]));
     
     else if(nevents_written[i]<0)
       
-      larlite::Message::send(larlite::msg::kERROR,
+      foolight::Message::send(foolight::msg::kERROR,
 			      Form("TTree, \"%s_tree\", has less entries (%d) than expected!",
-				   larlite::data::kDATA_TREE_NAME[i].c_str(),
+				   foolight::data::kDATA_TREE_NAME[i].c_str(),
 				   nevents_written[i]));
     
   }

@@ -3,8 +3,8 @@ import sys, os
 if len(sys.argv)<2:
    sys.stderr.write('Usage: %s CLASS_NAME\n\n' % sys.argv[0])
    sys.exit(1)
-if not 'LARLITE_BASEDIR' in os.environ.keys():
-   sys.stderr.write('$LARLITE_BASEDIR not defined!\n\n')
+if not 'FOOLIGHT_BASEDIR' in os.environ.keys():
+   sys.stderr.write('$FOOLIGHT_BASEDIR not defined!\n\n')
    sys.exit(1)
 for f in ['GNUmakefile','LinkDef.h']:
    if not f in os.listdir(os.getcwd()):
@@ -14,7 +14,7 @@ for f in ['GNUmakefile','LinkDef.h']:
 target_dir = os.getcwd()
 working_package = target_dir.replace(target_dir[0:target_dir.rfind('/')+1],'')
 name=sys.argv[1]
-source_dir='%s/bin/tmp' % os.environ['LARLITE_BASEDIR']
+source_dir='%s/bin/tmp' % os.environ['FOOLIGHT_BASEDIR']
 
 in_source='%s/empty.cxx' % source_dir
 in_header='%s/empty.h' % source_dir

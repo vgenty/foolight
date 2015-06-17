@@ -6,8 +6,8 @@
 #define BASE_TYPEDEF_H
 
 // Class forward declaration here
-namespace larlite{
-  class larlite_base;
+namespace foolight{
+  class foolight_base;
   class Message;
 }
 #endif

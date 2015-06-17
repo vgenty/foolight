@@ -1,10 +1,10 @@
-#ifndef LARLITE_SPARSE_VECTOR_CXX
-#define LARLITE_SPARSE_VECTOR_CXX
+#ifndef FOOLIGHT_SPARSE_VECTOR_CXX
+#define FOOLIGHT_SPARSE_VECTOR_CXX
 
 #include "sparse_vector.h"
 #include "DataFormatException.h"
 
-namespace larlite{
+namespace foolight{
 
   //
   // sparse_vector

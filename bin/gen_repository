@@ -4,13 +4,13 @@ import sys, os
 if len(sys.argv)<2:
    sys.stderr.write('Usage: %s REPOSITORY_NAME\n\n' % sys.argv[0])
    sys.exit(1)
-if not 'LARLITE_USERDEVDIR' in os.environ.keys():
-   sys.stderr.write('$LARLITE_USERDEVDIR not defined!\n\n')
+if not 'FOOLIGHT_USERDEVDIR' in os.environ.keys():
+   sys.stderr.write('$FOOLIGHT_USERDEVDIR not defined!\n\n')
    sys.exit(1)
 
 name=sys.argv[1].rstrip('/')
-target_dir='%s/%s' % (os.environ['LARLITE_USERDEVDIR'],name)
-source_dir='%s/bin/repo_tmp' % os.environ['LARLITE_BASEDIR']
+target_dir='%s/%s' % (os.environ['FOOLIGHT_USERDEVDIR'],name)
+source_dir='%s/bin/repo_tmp' % os.environ['FOOLIGHT_BASEDIR']
 
 # Check if new repo is good to be generated
 if os.path.exists(target_dir):

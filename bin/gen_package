@@ -4,20 +4,20 @@ repo_name="RepositoryName"
 if len(sys.argv)<2:
    sys.stderr.write('Usage: %s PACKAGE_NAME\n\n' % sys.argv[0])
    sys.exit(1)
-if not 'LARLITE_USERDEVDIR' in os.environ.keys():
-   sys.stderr.write('$LARLITE_USERDEVDIR not defined!\n\n')
+if not 'FOOLIGHT_USERDEVDIR' in os.environ.keys():
+   sys.stderr.write('$FOOLIGHT_USERDEVDIR not defined!\n\n')
    sys.exit(1)
-userdev = os.environ['LARLITE_USERDEVDIR']
+userdev = os.environ['FOOLIGHT_USERDEVDIR']
 while userdev[-1] == '/':
    userdev = userdev[0:len(userdev)-1]
 
 cwd = os.getcwd()
 if cwd.find(userdev) < 0:
-   sys.stderr.write('Current dir not appeared to be under a package in $LARLITE_USERDEVDIR.\n\n')
+   sys.stderr.write('Current dir not appeared to be under a package in $FOOLIGHT_USERDEVDIR.\n\n')
    sys.exit(1)
 repo_name = cwd.replace(userdev,'')
 if not len(repo_name):
-   sys.stderr.write('Current dir not appeared to be under a package in $LARLITE_USERDEVDIR.\n\n')
+   sys.stderr.write('Current dir not appeared to be under a package in $FOOLIGHT_USERDEVDIR.\n\n')
    sys.exit(1)
 while repo_name[0] == '/':
    repo_name = repo_name[1:len(repo_name)]
@@ -25,8 +25,8 @@ if repo_name.find('/')>=0:
    repo_name = repo_name[0:repo_name.find('/')]
 
 name=sys.argv[1]
-target_dir='%s/%s/%s' % (os.environ['LARLITE_USERDEVDIR'],repo_name,name)
-source_dir='%s/bin/package_tmp' % os.environ['LARLITE_BASEDIR']
+target_dir='%s/%s/%s' % (os.environ['FOOLIGHT_USERDEVDIR'],repo_name,name)
+source_dir='%s/bin/package_tmp' % os.environ['FOOLIGHT_BASEDIR']
 
 if not os.path.exists(target_dir):
    try:
@@ -55,7 +55,7 @@ in_bin_makefile='%s/bin/GNUmakefile.tmp' % source_dir
 in_bin_source='%s/bin/example.tmp' % source_dir
 in_mac_example='%s/mac/example.py' % source_dir
 in_mac_example_anaunit='%s/mac/example_anaunit.py' % source_dir
-in_mac_example_ertool='%s/mac/example_ertool.py' % source_dir
+#in_mac_example_ertool='%s/mac/example_ertool.py' % source_dir
 
 src_list = { in_makefile : '%s/GNUmakefile'   % target_dir,
              in_linkdef  : '%s/LinkDef.h'     % target_dir,
@@ -65,8 +65,8 @@ src_list = { in_makefile : '%s/GNUmakefile'   % target_dir,
              in_bin_makefile   : '%s/bin/GNUmakefile' % target_dir,
              in_bin_source     : '%s/bin/example.cc'  % target_dir,
              in_mac_example    : '%s/mac/example.py'  % target_dir,
-             in_mac_example_anaunit : '%s/mac/example_anaunit.py'  % target_dir,
-             in_mac_example_ertool  : '%s/mac/example_ertool.py'  % target_dir }
+             in_mac_example_anaunit : '%s/mac/example_anaunit.py'  % target_dir }
+             #in_mac_example_ertool  : '%s/mac/example_ertool.py'  % target_dir }
 
 for src in src_list.keys():
    contents=open(src,'r').read()
@@ -84,9 +84,9 @@ for src in src_list.keys():
 #os.system('chmod 774 %s/lib/gen_rootmap.sh' % target_dir)
 
 # Add new package to the list of directories to be compiled
-contents=open('%s/%s/GNUmakefile' % (os.environ['LARLITE_USERDEVDIR'],repo_name), 'r').read()
+contents=open('%s/%s/GNUmakefile' % (os.environ['FOOLIGHT_USERDEVDIR'],repo_name), 'r').read()
 contents=contents.replace('#ADD_NEW_SUBDIR','%s #ADD_NEW_SUBDIR' % name)
-fout = open('%s/%s/GNUmakefile' % (os.environ['LARLITE_USERDEVDIR'],repo_name), 'w')
+fout = open('%s/%s/GNUmakefile' % (os.environ['FOOLIGHT_USERDEVDIR'],repo_name), 'w')
 fout.write(contents)
 fout.close()
 

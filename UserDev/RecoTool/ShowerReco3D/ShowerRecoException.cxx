@@ -1,6 +1,0 @@
-#ifndef RECOTOOL_SHOWERRECOEXCEPTION_CXX
-#define RECOTOOL_SHOWERRECOEXCEPTION_CXX
-
-#include "ShowerRecoException.h"
-
-#endif

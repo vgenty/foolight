@@ -1,7 +1,7 @@
 #####################################################################################
 #
 # A top Makefile for building my project.
-# One needs to define $LARLITE_COREDIR environment variable and set it to where this
+# One needs to define $FOOLIGHT_COREDIR environment variable and set it to where this
 # makefile exists. 
 # One can type "make" and this builds packages that are added in $SUBDIR defined below.
 # 
@@ -9,29 +9,30 @@
 #
 #####################################################################################
 #
-# IMPOSE CONDITION BETWEEN LARLITE_COREDIR & PWD =>
-#   do not compile if PWD !=$LARLITE_COREDIR is set elsewhere
+# IMPOSE CONDITION BETWEEN FOOLIGHT_COREDIR & PWD =>
+#   do not compile if PWD !=$FOOLIGHT_COREDIR is set elsewhere
 #
-ifndef LARLITE_COREDIR
- LARLITE_COREDIR := $(shell cd . && pwd -P)
+ifndef FOOLIGHT_COREDIR
+ FOOLIGHT_COREDIR := $(shell cd . && pwd -P)
 endif
-NORMALIZED_LARLITE_COREDIR := $(shell cd ${LARLITE_COREDIR} && pwd -P)
-ifneq ($(NORMALIZED_LARLITE_COREDIR), $(shell cd . && pwd -P))
+NORMALIZED_FOOLIGHT_COREDIR := $(shell cd ${FOOLIGHT_COREDIR} && pwd -P)
+ifneq ($(NORMALIZED_FOOLIGHT_COREDIR), $(shell cd . && pwd -P))
  ifeq ($(wildcard ./Base/*),)
-ERROR_MESSAGE := $(error Your source code detected in current dir, but LARLITE_COREDIR is not current dir.  \
+ERROR_MESSAGE := $(error Your source code detected in current dir, but FOOLIGHT_COREDIR is not current dir.  \
    To avoid recompiling the wrong installation,\
-   LARLITE_COREDIR must be set to the current directory when making.  \
-   Currently it is set to ${LARLITE_COREDIR} [$(NORMALIZED_LARLITE_COREDIR)].  \
+   FOOLIGHT_COREDIR must be set to the current directory when making.  \
+   Currently it is set to ${FOOLIGHT_COREDIR} [$(NORMALIZED_FOOLIGHT_COREDIR)].  \
    Current directory is [$(shell pwd)].)
  endif
 endif
-export LARLITE_COREDIR
+export FOOLIGHT_COREDIR
 #
 #####################################################################################
 #
 # Define directories to be compile upon a global "make"...
 #
-SUBDIRS :=  Base LArUtil DataFormat Analysis
+#SUBDIRS :=  Base LArUtil DataFormat Analysis
+SUBDIRS :=  Base DataFormat Analysis
 
 #####################################################################################
 #
@@ -47,7 +48,7 @@ all:
 # CLEANs...
 #
 clean:
-	@for i in $(SUBDIRS); do ( echo "" && echo "Cleaning $$i..." && cd $$i && $(MAKE) clean && rm -f $(LARLITE_LIBDIR)/$$i.* ) || exit $$?; done
+	@for i in $(SUBDIRS); do ( echo "" && echo "Cleaning $$i..." && cd $$i && $(MAKE) clean && rm -f $(FOOLIGHT_LIBDIR)/$$i.* ) || exit $$?; done
 
 #####################################################################################
 #
@@ -55,13 +56,13 @@ clean:
 #
 doxygen:
 	@echo 'dOxygenising your code...'
-	@mkdir -p $(LARLITE_COREDIR)/doc/dOxygenMyProject
-	@doxygen $(LARLITE_COREDIR)/doc/doxygenMyProject.script
+	@mkdir -p $(FOOLIGHT_COREDIR)/doc/dOxygenMyProject
+	@doxygen $(FOOLIGHT_COREDIR)/doc/doxygenMyProject.script
 
 doxygen+:
 	@echo 'dOxygenising MyProject + local-ROOT...'
-	@mkdir -p $(LARLITE_COREDIR)/doc/dOxygenMyProject+
-	@doxygen $(LARLITE_COREDIR)/doc/doxygenMyProject+.script
+	@mkdir -p $(FOOLIGHT_COREDIR)/doc/dOxygenMyProject+
+	@doxygen $(FOOLIGHT_COREDIR)/doc/doxygenMyProject+.script
 #
 #####################################################################################
 #EOF

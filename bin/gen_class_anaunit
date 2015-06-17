@@ -3,8 +3,8 @@ import sys, os
 if len(sys.argv)<2:
    sys.stderr.write('Usage: %s CLASS_NAME\n\n' % sys.argv[0])
    sys.exit(1)
-if not 'LARLITE_COREDIR' in os.environ.keys():
-   sys.stderr.write('$LARLITE_COREDIR not defined!\n\n')
+if not 'FOOLIGHT_COREDIR' in os.environ.keys():
+   sys.stderr.write('$FOOLIGHT_COREDIR not defined!\n\n')
    sys.exit(1)
 for f in ['GNUmakefile','LinkDef.h']:
    if not f in os.listdir(os.getcwd()):
@@ -14,7 +14,7 @@ for f in ['GNUmakefile','LinkDef.h']:
 target_dir = os.getcwd()
 working_package = target_dir.replace(target_dir[0:target_dir.rfind('/')+1],'')
 name=sys.argv[1]
-source_dir='%s/Analysis/bin/tmp' % os.environ['LARLITE_COREDIR']
+source_dir='%s/Analysis/bin/tmp' % os.environ['FOOLIGHT_COREDIR']
 
 in_source='%s/ana.cxx' % source_dir
 in_header='%s/ana.h' % source_dir
@@ -44,24 +44,24 @@ fout=open('%s/LinkDef.h' % target_dir,'w')
 for line in contents:
    line=line + '\n'
    if line.find('ADD_NEW_CLASS')>=0:
-      line='#pragma link C++ class larlite::%s+;\n%s' % (name,line)
+      line='#pragma link C++ class foolight::%s+;\n%s' % (name,line)
    fout.write(line)
 
 # modify GNUmakefile (if necessary)
 contents=open('%s/GNUmakefile' % target_dir, 'r').read()
-inc_inserted = (contents.find('larlite-config --includes') >= 0)
-lib_inserted = (contents.find('larlite-config --libs') >= 0)
+inc_inserted = (contents.find('foolight-config --includes') >= 0)
+lib_inserted = (contents.find('foolight-config --libs') >= 0)
 if not inc_inserted or not lib_inserted:
    contents = contents.split('\n')
    new_contents=''
    for l in contents:
       if not inc_inserted and not l.find('INCFLAG') < 0:
          l += '\n'
-         l += 'INCFLAGS += $(shell larlite-config --includes)'
+         l += 'INCFLAGS += $(shell foolight-config --includes)'
          inc_inserted=True
       if not lib_inserted and not l.find('LDFLAGS') < 0:
          l += '\n'
-         l += 'LDFLAGS += $(shell larlite-config --libs)'
+         l += 'LDFLAGS += $(shell foolight-config --libs)'
          lib_inserted=True
       new_contents += '%s\n' % l
 
@@ -74,10 +74,10 @@ if not inc_inserted or not lib_inserted:
       new_contents = ''
       for l in contents:
          if not inc_inserted and not l.find('GNUmakefile.CORE') < 0:
-            l = 'INCFLAGS += $(shell larlite-config --includes)\n%s' % l
+            l = 'INCFLAGS += $(shell foolight-config --includes)\n%s' % l
             inc_inserted=True
          if not lib_inserted and not l.find('GNUmakefile.CORE') < 0:
-            l = 'LDFLAGS += $(shell larlite-config --libs)\n%s' % l
+            l = 'LDFLAGS += $(shell foolight-config --libs)\n%s' % l
             lib_inserted=True
          new_contents += '%s\n' % l
       

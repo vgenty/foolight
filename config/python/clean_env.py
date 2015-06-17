@@ -1,9 +1,9 @@
 import os,sys
 cmd = ''
-if not len(sys.argv) == 2 or not 'LARLITE_BASEDIR' in os.environ or not sys.argv[1] in os.environ:
+if not len(sys.argv) == 2 or not 'FOOLIGHT_BASEDIR' in os.environ or not sys.argv[1] in os.environ:
     pass
 else:
-    lite = os.environ['LARLITE_BASEDIR']
+    lite = os.environ['FOOLIGHT_BASEDIR']
     e = sys.argv[1]
     v = os.environ[e]
     start = v.find(lite)

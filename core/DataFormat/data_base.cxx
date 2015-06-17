@@ -1,9 +1,9 @@
-#ifndef LARLITE_DATA_BASE_CXX
-#define LARLITE_DATA_BASE_CXX
+#ifndef FOOLIGHT_DATA_BASE_CXX
+#define FOOLIGHT_DATA_BASE_CXX
 
 #include "data_base.h"
 
-namespace larlite {
+namespace foolight {
 
   //
   // data_base
@@ -37,7 +37,7 @@ namespace larlite {
   const std::string& output_base::name() const
   { return _id.second; }
 
-  const ::larlite::product_id output_base::id() const
+  const ::foolight::product_id output_base::id() const
   { return _id; }
 
   //

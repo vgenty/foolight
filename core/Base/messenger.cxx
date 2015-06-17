@@ -1,8 +1,8 @@
-#ifndef LARLITE_MESSENGER_CXX
-#define LARLITE_MESSENGER_CXX
+#ifndef FOOLIGHT_MESSENGER_CXX
+#define FOOLIGHT_MESSENGER_CXX
 
 #include "messenger.h"
-namespace larlite {
+namespace foolight {
   Message* Message::me = 0;
   
   void Message::send(msg::Level level, std::string msg)

@@ -3,8 +3,8 @@
 #
 
 # specific names for this package
-DICT  = LArLite_BaseDict
-SHLIB = libLArLite_Base.so
+DICT  = Foolight_BaseDict
+SHLIB = libFoolight_Base.so
 SOURCES = $(filter-out $(DICT).cxx, $(wildcard *.cxx))
 FMWK_HEADERS = LinkDef.h $(DICT).h
 HEADERS = $(filter-out $(FMWK_HEADERS), $(wildcard *.h))
@@ -18,13 +18,13 @@ OSNAME          = $(shell uname -s)
 HOST            = $(shell uname -n)
 OSNAMEMODE      = $(OSNAME)
 
-include $(LARLITE_BASEDIR)/Makefile/Makefile.${OSNAME}
+include $(FOOLIGHT_BASEDIR)/Makefile/Makefile.${OSNAME}
 
 # set compiler options for ROOT
 CXXFLAGS +=  `root-config --cflags`
 
 # call the common GNUmakefile
-include $(LARLITE_BASEDIR)/Makefile/GNUmakefile.CORE
+include $(FOOLIGHT_BASEDIR)/Makefile/GNUmakefile.CORE
 
 
 

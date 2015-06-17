@@ -11,13 +11,13 @@
 /** \addtogroup DataFormat
 
     @{*/
-#ifndef LARLITE_DATAFORMATEXCEPTION_H
-#define LARLITE_DATAFORMATEXCEPTION_H
+#ifndef FOOLIGHT_DATAFORMATEXCEPTION_H
+#define FOOLIGHT_DATAFORMATEXCEPTION_H
 
 #include <iostream>
 #include <exception>
 
-namespace larlite {
+namespace foolight {
   /**
      \class DataFormatException
      Generic (base) exception class

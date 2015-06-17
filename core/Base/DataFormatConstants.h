@@ -12,8 +12,8 @@
 
     @{*/
 
-#ifndef LARLITE_DATAFORMATCONSTANTS_H
-#define LARLITE_DATAFORMATCONSTANTS_H
+#ifndef FOOLIGHT_DATAFORMATCONSTANTS_H
+#define FOOLIGHT_DATAFORMATCONSTANTS_H
 
 #include <string>
 #include <limits>
@@ -21,7 +21,7 @@
 #include <TROOT.h>
 
 /// Namespace of everything in this framework
-namespace larlite{
+namespace foolight{
   
   /// Defines constants for data structure definition (system utility)
   namespace data{
@@ -47,45 +47,13 @@ namespace larlite{
     
     /**
        Define event-wise data product type identifiers.\n
-       What appears here must have a corresponding entry in larlite::data::kDATA_TREE_NAME.
+       What appears here must have a corresponding entry in foolight::data::kDATA_TREE_NAME.
     */
     enum DataType_t {
       // Event-data types
       kUndefined=0,
       kEvent,
-      kGTruth,             ///< simb::GTruth
-      kMCTruth,            ///< simb::MCTruth 
-      kMCParticle,         ///< simb::MCParticle
-      kMCFlux,             ///< simb::MCFlux
-      kMCTrajectory,       ///< simb::MCTrajectory
-      kMCNeutrino,         ///< simb::MCNeutrino
-      kSimChannel,         ///< sim::SimChannel
-      kMCShower,           ///< sim::MCShower
-      kRawDigit,           ///< raw::RawDigit
-      kWire,               ///< recob::Wire
-      kHit,                ///< recob::Hit
-      kCosmicTag,          ///< anab::CosmicTag 
-      kOpHit,              ///< opdet::OpHit
-      kOpFlash,            ///< opdet::OpFlash
-      kCluster,            ///< recob::Cluster
-      kSeed,               ///< recob::Seed
-      kSpacePoint,         ///< recob::Spacepoints
       kTrack,              ///< recob::Track
-      kShower,             ///< recob::Shower
-      kVertex,             ///< recob::Vertex
-      kEndPoint2D,         ///< recob::EndPoint2D
-      kCalorimetry,        ///< anab::Calorimetry
-      kParticleID,         ///< anab::ParticleID
-      kPFParticle,         ///< recob::PFParticle
-      kUserInfo,           ///< dynamic data container (LArLite original)
-      kTrigger,            ///< Trigger data (LArLite original)
-      kMCTrack,            ///< sim::MCTrack
-      kMCTree,             ///< sim::MCTree
-      kMinos,              ///< t962::Minos
-      kFIFO,               ///< from larlight::fifo
-      kAssociation,        ///< Association data product
-      kPCAxis,             ///< recob::PCAxis
-      kFlashMatch,         ///< anab::FlashMatch
       kDATA_TYPE_MAX       ///< Event-wise enum boundary
     };
 
@@ -98,46 +66,13 @@ namespace larlite{
     enum SubRunDataType_t {
       // SubRun-data types
       kSUBRUNDATA_Undefined,
-      kPOTSummary,         ///< sumdata::POTSummary 
       kSUBRUNDATA_TYPE_MAX ///< SubRun-data type enum boundary
     };
 
     const std::string kDATA_TREE_NAME[kDATA_TYPE_MAX] = {
       "unknown",
       "event",
-      "gtruth",
-      "mctruth",
-      "mcpart",
-      "mcflux",
-      "mctrajectory",
-      "mcnu",
-      "simch",
-      "mcshower",
-      "rawdigit",
-      "wire",
-      "hit",
-      "cosmictag",
-      "ophit",
-      "opflash",
-      "cluster",
-      "seed",
-      "sps",
-      "track",
-      "shower",
-      "vertex",
-      "endpoint2d",
-      "calo",
-      "partid",
-      "pfpart",
-      "user",
-      "trigger",
-      "mctrack",
-      "mctree",
-      "minos",
-      "fifo",
-      "ass",
-      "pcaxis",
-      "fmatch"
+      "track"
     };
 
     const std::string kRUNDATA_TREE_NAME[kRUNDATA_TYPE_MAX] = {
@@ -146,10 +81,9 @@ namespace larlite{
     
     const std::string kSUBRUNDATA_TREE_NAME[kSUBRUNDATA_TYPE_MAX] = {
       "undefined",
-      "potsummary"
     };
 
-    static const std::string kEVENT_ID_TREE("larlite_id_tree");
+    static const std::string kEVENT_ID_TREE("foolight_id_tree");
   }
   
 }

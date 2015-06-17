@@ -7,109 +7,110 @@
 
 // Class forward declaration here
 
-namespace larlite{
+namespace foolight{
 
   class DataFormatException;
-
+  
   class data_base;
   class event_base;
+  
   class product_id;
 
-  class potsummary;
+  // class potsummary;
 
-  class rawdigit;
-  class event_rawdigit;
+  // class rawdigit;
+  // class event_rawdigit;
 
-  class wire;
-  class event_wire;
+  // class wire;
+  // class event_wire;
 
-  class hit;
-  class event_hit;
+  // class hit;
+  // class event_hit;
 
-  class cosmictag;
-  class event_cosmictag;
+  // class cosmictag;
+  // class event_cosmictag;
 
-  class ophit;
-  class event_ophit;
+  // class ophit;
+  // class event_ophit;
 
-  class opflash;
-  class event_opflash;
-
-  class cluster;
-  class event_cluster;
-
-  class endpoint2d;
-  class event_endpoint2d;
-
-  class spacepoint;
-  class event_spacepoint;  
-
-  class seed;
-  class event_seed;
+  // class opflash;
+  // class event_opflash;
   
-  class vertex;
-  class event_vertex;
-
+  // class cluster;
+  // class event_cluster;
+  
+  // class endpoint2d;
+  // class event_endpoint2d;
+  
+  // class spacepoint;
+  // class event_spacepoint;  
+  
+  // class seed;
+  // class event_seed;
+  
+  // class vertex;
+  // class event_vertex;
+  
   class track;
   class event_track;
-
-  class shower;
-  class event_shower;
-
-  class calorimetry;
-  class event_calorimetry;
   
-  class user_info;
-  class event_user;
+  // class shower;
+  // class event_shower;
 
-  class gtruth;
-  class event_gtruth;
+  // class calorimetry;
+  // class event_calorimetry;
+  
+  // class user_info;
+  // class event_user;
 
-  class mcshower;
-  class event_mcshower;
+  // class gtruth;
+  // class event_gtruth;
 
-  class mctrack;
-  class event_mctrack;
+  // class mcshower;
+  // class event_mcshower;
 
-  class mcstep;
-  class mctrajectory;
+  // class mctrack;
+  // class event_mctrack;
 
-  class mcpart;
-  class event_mcpart;
+  // class mcstep;
+  // class mctrajectory;
 
-  class mctree;
-  class event_mctree;
+  // class mcpart;
+  // class event_mcpart;
 
-  class mcflux;
-  class event_mcflux;
+  // class mctree;
+  // class event_mctree;
 
-  class mcnu;
-  class mctruth;
-  class event_mctruth;
+  // class mcflux;
+  // class event_mcflux;
 
-  class ide;
-  class simch;
-  class event_simch;
+  // class mcnu;
+  // class mctruth;
+  // class event_mctruth;
+  
+  // class ide;
+  // class simch;
+  // class event_simch;
 
-  class pfpart;
-  class event_pfpart;
+  // class pfpart;
+  // class event_pfpart;
 
-  class partid;
-  class event_partid;
+  // class partid;
+  // class event_partid;
 
-  class trigger;
+  // class trigger;
   class storage_manager;
+  
+  // class minos;
 
-  class minos;
+  // class pcaxis;
+  // class event_pcaxis;
 
-  class pcaxis;
-  class event_pcaxis;
-
-  class flashmatch;
-  class event_flashmatch;
+  // class flashmatch;
+  // class event_flashmatch;
 }
 
-class treenode;
+//class treenode;
 #endif
 
 

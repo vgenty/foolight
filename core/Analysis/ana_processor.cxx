@@ -1,9 +1,9 @@
-#ifndef LARLITE_ANA_PROCESSOR_CXX
-#define LARLITE_ANA_PROCESSOR_CXX
+#ifndef FOOLIGHT_ANA_PROCESSOR_CXX
+#define FOOLIGHT_ANA_PROCESSOR_CXX
 
 #include "ana_processor.h"
 
-namespace larlite {
+namespace foolight {
   
   ana_processor::ana_processor(){
     _name="ana_processor";
@@ -18,7 +18,7 @@ namespace larlite {
   
   void ana_processor::set_verbosity(msg::Level level){
     
-    larlite_base::set_verbosity(level);
+    foolight_base::set_verbosity(level);
     if(_storage)
       _storage->set_verbosity(level);
     

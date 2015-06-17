@@ -1,15 +1,15 @@
-#ifndef LARLITE_STORAGE_MANAGER_CXX
-#define LARLITE_STORAGE_MANAGER_CXX
+#ifndef FOOLIGHT_STORAGE_MANAGER_CXX
+#define FOOLIGHT_STORAGE_MANAGER_CXX
 #include "storage_manager.h"
 //#include "storage_manager.template.cc"
 
-namespace larlite {
+namespace foolight {
 
   storage_manager* storage_manager::me=0;
   
   storage_manager::storage_manager(storage_manager::IOMode_t mode)
-    : larlite_base()
-    , _ptr_data_array (data::kDATA_TYPE_MAX,std::map<std::string,larlite::event_base*>())
+    : foolight_base()
+    , _ptr_data_array (data::kDATA_TYPE_MAX,std::map<std::string,foolight::event_base*>())
     , _in_ch  (data::kDATA_TYPE_MAX,std::map<std::string,TChain*>())
     , _out_ch (data::kDATA_TYPE_MAX,std::map<std::string,TTree*>() )
   {
@@ -121,10 +121,10 @@ namespace larlite {
     return result_ptr;    
   }
   
-  std::map<larlite::data::DataType_t,std::set<std::string> > storage_manager::list_data_types() const {
+  std::map<foolight::data::DataType_t,std::set<std::string> > storage_manager::list_data_types() const {
 
-    std::map<larlite::data::DataType_t,std::set<std::string> > result;
-    for(int i=0;i<larlite::data::kDATA_TYPE_MAX; i++) {
+    std::map<foolight::data::DataType_t,std::set<std::string> > result;
+    for(int i=0;i<foolight::data::kDATA_TYPE_MAX; i++) {
 
       for(auto const& name_ptr : _ptr_data_array[i]) {
 
@@ -273,14 +273,14 @@ namespace larlite {
 	      char c[2] = "_";
 	      if(obj_name.find_first_of(c) > obj_name.size() ||
 		 obj_name.find_first_of(c) == obj_name.find_last_of(c)) {
-		Message::send(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not LArLite TTree)",obj->GetName()));
+		Message::send(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not Foolight TTree)",obj->GetName()));
 		continue;
 	      }
 	      std::string type_name( obj_name.substr(0,obj_name.find_first_of(c)) );
 	      std::string suffix( obj_name.substr(obj_name.find_last_of(c)+1, obj_name.size()-obj_name.find_last_of(c)) );
 	      std::string producer_name( obj_name.substr(obj_name.find_first_of(c)+1,obj_name.find_last_of(c)-obj_name.find_first_of(c)-1) );
 	      if(suffix != "tree") {
-		Message::send(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not LArLite TTree)",obj->GetName()));
+		Message::send(msg::kINFO,__FUNCTION__,Form("Skipping %s ... (not Foolight TTree)",obj->GetName()));
 		continue;
 	      }
 	      for(size_t i=0; i<data::kDATA_TYPE_MAX; ++i)
@@ -836,74 +836,74 @@ namespace larlite {
     return true;
   }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_gtruth> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_gtruth> () const
   { return data::kGTruth; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_mctruth> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_mctruth> () const
   { return data::kMCTruth; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_mcpart> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_mcpart> () const
   { return data::kMCParticle; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_mcflux> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_mcflux> () const
   { return data::kMCFlux; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_simch> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_simch> () const
   { return data::kSimChannel; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_mcshower> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_mcshower> () const
   { return data::kMCShower; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_rawdigit> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_rawdigit> () const
   { return data::kRawDigit; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_wire> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_wire> () const
   { return data::kWire; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_hit> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_hit> () const
   { return data::kHit; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_ophit> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_ophit> () const
   { return data::kOpHit; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_opflash> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_opflash> () const
   { return data::kOpFlash; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_cluster> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_cluster> () const
   { return data::kCluster; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_seed> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_seed> () const
   { return data::kSeed; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_spacepoint> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_spacepoint> () const
   { return data::kSpacePoint; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_track> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_track> () const
   { return data::kTrack; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_shower> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_shower> () const
   { return data::kShower; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_vertex> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_vertex> () const
   { return data::kVertex; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_endpoint2d> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_endpoint2d> () const
   { return data::kEndPoint2D; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_calorimetry> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_calorimetry> () const
   { return data::kCalorimetry; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_partid> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_partid> () const
   { return data::kParticleID; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_pfpart> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_pfpart> () const
   { return data::kPFParticle; }
 
-  template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_user> () const
+  template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_user> () const
   { return data::kUserInfo; }
 
   template <class T>
-  const ::larlite::data::DataType_t storage_manager::data_type() const
+  const ::foolight::data::DataType_t storage_manager::data_type() const
   { 
     Message::send(msg::kERROR,
 		  __PRETTY_FUNCTION__,
@@ -912,7 +912,7 @@ namespace larlite {
     return data::kUndefined;
   }
 
-  //template<> const ::larlite::data::DataType_t storage_manager::data_type<::larlite::event_trigger> ()
+  //template<> const ::foolight::data::DataType_t storage_manager::data_type<::foolight::event_trigger> ()
   //{ return data::kTrigger; }
 
   template <class T>

@@ -1,5 +1,5 @@
 
-#include "Base/larlite_base.h"
+#include "Base/foolight_base.h"
 #include "Base/FrameworkConstants.h"
 #include <iostream>
 int main(){
@@ -11,18 +11,18 @@ int main(){
 
   // Test routine for Base package.
   
-  // (1) simple: create larlite_base
+  // (1) simple: create foolight_base
 
-  larlite::larlite_base me;
-  me.set_verbosity(larlite::msg::kDEBUG);
+  foolight::foolight_base me;
+  me.set_verbosity(foolight::msg::kDEBUG);
   
   // (2) Send messages
   
-  me.print(larlite::msg::kDEBUG,"... sending DEBUG message");
-  me.print(larlite::msg::kINFO,"... sending INFO message");
-  me.print(larlite::msg::kNORMAL,"... sending NORMAL message");
-  me.print(larlite::msg::kWARNING,"... sending WARNING message");
-  me.print(larlite::msg::kERROR,"... sending ERROR message");
+  me.print(foolight::msg::kDEBUG,"... sending DEBUG message");
+  me.print(foolight::msg::kINFO,"... sending INFO message");
+  me.print(foolight::msg::kNORMAL,"... sending NORMAL message");
+  me.print(foolight::msg::kWARNING,"... sending WARNING message");
+  me.print(foolight::msg::kERROR,"... sending ERROR message");
 
   std::cout
     << std::endl

@@ -13,14 +13,14 @@
     @{*/
 
 
-#ifndef LARLITE_MESSENGER_H
-#define LARLITE_MESSENGER_H
+#ifndef FOOLIGHT_MESSENGER_H
+#define FOOLIGHT_MESSENGER_H
 
 #include <cstdio>
 #include <iostream>
 #include "FrameworkConstants.h"
 
-namespace larlite {
+namespace foolight {
   /**
      \class Message
      \brief Utility class used to show formatted message on the screen.

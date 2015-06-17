@@ -12,16 +12,14 @@
 
     @{*/
 
-#ifndef LARLITE_TRACK_H
-#define LARLITE_TRACK_H
+#ifndef FOOLIGHT_TRACK_H
+#define FOOLIGHT_TRACK_H
 
 #include "data_base.h"
-#include "Base/GeoTypes.h"
-#include "Base/GeoConstants.h"
 #include "TVector3.h"
 #include "TMatrixD.h"
 
-namespace larlite {
+namespace foolight {
   /**
      \class track
      LArSoft Track class equivalent data container
@@ -57,22 +55,22 @@ namespace larlite {
 			   std::vector<double> &xyzEnd)        const;
     void            Direction(double *dcosStart,
 			      double *dcosEnd)                 const;
-    double          ProjectedLength(geo::View_t view)          const;
-    double          PitchInView(geo::View_t view,
-				size_t trajectory_point=0)     const;
+    // double          ProjectedLength(geo::View_t view)          const;
+    // double          PitchInView(geo::View_t view,
+    // 				size_t trajectory_point=0)     const;
     int             ID()                                       const;
     // A trajectory point is the combination of a position vector
     // and its corresponding direction vector
     size_t          NumberTrajectoryPoints()                    const;
     size_t          NumberCovariance()                          const;
     size_t          NumberFitMomentum()                         const;
-    size_t          NumberdQdx(geo::View_t view=geo::kUnknown)  const;
+    // size_t          NumberdQdx(geo::View_t view=geo::kUnknown)  const;
     double          Length(size_t p=0)                          const;
     void            TrajectoryAtPoint(unsigned int  p,
 				      TVector3     &pos,
 				      TVector3     &dir)        const;
-    const double&   DQdxAtPoint(unsigned int p,
-				geo::View_t view=geo::kUnknown) const;
+    // const double&   DQdxAtPoint(unsigned int p,
+    // 				geo::View_t view=geo::kUnknown) const;
     const TVector3& DirectionAtPoint (unsigned int p)           const;
     const TVector3& LocationAtPoint  (unsigned int p)           const;
     const double&   MomentumAtPoint  (unsigned int p)           const;
@@ -118,7 +116,7 @@ namespace larlite {
      \class event_track 
      A collection storage class of multiple tracks.
   */
-  class event_track : public std::vector<larlite::track>, public event_base {
+  class event_track : public std::vector<foolight::track>, public event_base {
     
   public:
     
@@ -126,7 +124,7 @@ namespace larlite {
     event_track(std::string name="noname") : event_base(data::kTrack,name) { clear_data(); }
     
     /// Default copy constructor
-    event_track(const event_track& original) : std::vector<larlite::track>(original),
+    event_track(const event_track& original) : std::vector<foolight::track>(original),
 					       event_base(original)
     {}
     

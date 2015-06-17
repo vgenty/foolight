@@ -11,20 +11,20 @@
 /** \addtogroup Analysis
 
     @{*/
-#ifndef LARLITE_ANA_PROCESSOR_H
-#define LARLITE_ANA_PROCESSOR_H
+#ifndef FOOLIGHT_ANA_PROCESSOR_H
+#define FOOLIGHT_ANA_PROCESSOR_H
 
 #include <vector>
 #include "ana_base.h"
 
-namespace larlite {
+namespace foolight {
   /**
      \class ana_processor
      A class to be loaded with arbitrary number of ana_base inherited analysis
      modules. This class process data by applying loaded analysis modules in
      consecutive order.
   */
-  class ana_processor : public larlite_base{
+  class ana_processor : public foolight_base{
     
   public:
     

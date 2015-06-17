@@ -6,7 +6,7 @@
 #define ANALYSIS_TYPEDEF_H
 
 // Class forward declaration here
-namespace larlite {
+namespace foolight {
   class ana_base;
   class ana_processor;
 
